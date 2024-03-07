@@ -1,0 +1,146 @@
+    /* Reset CSS */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  
+  /* Header Styles */
+  .header {
+    background: linear-gradient(to right, #1a1a1a, #333333);
+    height: 3rem;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align items to the start and end */
+    color: #fff; /* Text color */
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    margin: 0 10px;
+    font-size: .8rem;
+    text-transform: uppercase;
+    color: #fff; /* Link text color */
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #fff; /* Link color */
+  }
+
+  nav li:hover {
+    color: #bbb; /* Hover color */
+  }
+
+  /* Hero Section Styles */
+  .hero {
+    background: linear-gradient(to bottom right, #3366b4, #b6fbac, #f69d3c); /* Green, Yellow, and Orange gradient */
+    height: 280px; /* Adjusted height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:  black; /* Text color */
+    padding: 0 20px; /* Adjusted padding */
+  }
+
+  .hero h1 {
+    font-size: 48px; /* Increased font size */
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 24px; /* Increased font size */
+    margin-bottom: 40px;
+  }
+  /* Main Content Styles */
+  .main-content {
+    padding: 40px 20px;
+    margin-bottom: 2rem;
+  }
+  label {
+    font-size: 16px;
+    color: #2A2A2A;
+  }
+  input[type="text"],
+  select {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  button {
+    background-color: #334e76;
+    color: #FFF;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #2A2A2A;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .display-box {
+    background-color: #F9F9F9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  .display-box h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2A2A2A;
+    margin-bottom: 10px;
+  }
+  .display-box p {
+    font-size: 16px;
+    color: #2A2A2A;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  .generated-art{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .4rem;
+  }
+
+  .footer {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Text color */
+    padding: 20px;
+    text-align: center;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+
+  .footer p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Font size */
+  }
