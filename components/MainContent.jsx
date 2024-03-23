@@ -75,6 +75,7 @@ const MainContent = () => {
               } finally {
                 // Ensure requestRef is cleared even if cancellation fails
                 requestRef.current = null;
+                isCancelling.current=false;
               }
               break;
             }
@@ -84,6 +85,7 @@ const MainContent = () => {
         } finally {
           setLoading(false); // Reset loading state
           requestRef.current = null; // Clear request ref after completion or error
+          isCancelling.current = false; // Reset cancellation flag
         }
 
       };
