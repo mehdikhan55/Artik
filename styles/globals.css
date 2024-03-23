@@ -1,4 +1,6 @@
     /* Reset CSS */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
   * {
     margin: 0;
     padding: 0;
@@ -100,7 +102,7 @@
   }
   .display-box {
     background-color: #F9F9F9;
-    padding: 20px;
+    padding: 20px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-top: 20px;
@@ -124,6 +126,18 @@
     gap: .4rem;
   }
 
+  #generated-article-text{
+    width: 100%;
+    min-height: 800px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
   .footer {
     background-color: #333; /* Dark background color */
     color: #fff; /* Text color */
@@ -143,4 +157,18 @@
   .footer p {
     margin: 0; /* Remove default margin */
     font-size: 14px; /* Font size */
+  }
+
+
+
+  .loader{
+    width: 3.3%;
+    object-fit: contain;
+  }
+
+  .loading-text{
+    font-size: 1rem;
+    font-weight:900;
+    color: #ee7009;
+    text-transform: uppercase;
   }
