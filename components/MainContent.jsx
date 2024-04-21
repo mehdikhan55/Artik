@@ -43,11 +43,12 @@ const MainContent = () => {
     
         try {
           setGeneratedArticle(''); 
-    
+          const promp=`write an article on ${keyword} with word count ${wordCount}`;
+
           const response = await openai.chat.completions.create({
             messages: [
               { role: 'system', content: 'You are a helpful assistant.' },
-              { role: 'user', content: keyword },
+              { role: 'user', content: prompt },
             ],
             model: 'gpt-3.5-turbo',
             stream: true,
