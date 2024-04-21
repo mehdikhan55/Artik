@@ -7,9 +7,10 @@ import {load} from "../app/assets/index.jsx";
 
 const MainContent = () => {
     const [keyword,setKeyword] = useState(''); 
-    const [wordCount,setWordCount] = useState('1500');
+    const [wordCount,setWordCount] = useState(1500);
     const [generatedArticle,setGeneratedArticle]=useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit...")
     const [loading,setLoading]=useState(false);
+    const [wCount,setWCount]=useState(0);
 
     
     // Create a ref to store the ongoing request object
@@ -28,6 +29,19 @@ const MainContent = () => {
   }, []); // Empty dependency array for cleanup on unmount
 
 
+  useEffect(() => {
+    const countWords = (text) => {
+        // Remove leading and trailing whitespaces and split by whitespace
+        const words = text.trim().split(/\s+/);
+        // Filter out empty strings (caused by multiple spaces)
+        const nonEmptyWords = words.filter(word => word.length > 0);
+        return nonEmptyWords.length;
+    };
+
+    setWCount(countWords(generatedArticle));
+}, [generatedArticle]);
+``
+
     
     const openai = new OpenAI({
         apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -43,12 +57,12 @@ const MainContent = () => {
     
         try {
           setGeneratedArticle(''); 
-          const promp=`write an article on ${keyword} with word count ${wordCount}`;
+          const prompt=`write an article on ${keyword} with word count ${wordCount}`;
 
           const response = await openai.chat.completions.create({
             messages: [
               { role: 'system', content: 'You are a helpful assistant.' },
-              { role: 'user', content: prompt },
+              { role: 'user', content: `${prompt}` },
             ],
             model: 'gpt-3.5-turbo',
             stream: true,
@@ -124,10 +138,10 @@ const MainContent = () => {
         <div className="main-content">
             <form id="article-form" onSubmit={generateArticle}> {/* Add onSubmit handler */}
                 <label htmlFor="word-count">Select Word Count:</label>
-                <select value={wordCount} id="word-count" name="word-count">
-                    <option value="1500">1500</option>
-                    <option value="2500">2500</option>
-                    <option value="5000">5000</option>
+                <select onChange={(e)=>setWordCount(e.target.value)} value={wordCount} id="word-count" name="word-count">
+                    <option value={1500}>1500</option>
+                    <option value={2500}>2500</option>
+                    <option value={5000}>5000</option>
                 </select>
                 <label htmlFor="keyword">Enter Keyword:</label>
                 <input onChange={(e)=>setKeyword(e.target.value)} type="text" id="keyword" name="keyword" placeholder="e.g., Technology, Health, Travel" />
@@ -139,14 +153,17 @@ const MainContent = () => {
                     <div>
                     <h2 style={{display:"inline",marginRight:"6px"}}>Generated Article</h2>
                     {loading &&  <span className='loading-text'>(Generating...)</span>}
-                    </div>
+                    </div> 
                     <div>
                     <button style={{marginRight:"4px"}} onClick={(e) => handleStopGenerating(e)}>Stop Geenrating</button>
                     <button style={{marginRight:"4px"}} onClick={(e) => handleClear(e)}>Clear</button>
                     <button onClick={(e) => handleCopy(e)}>Copy</button>
                     </div>
                 </div>
-                <textarea value={`${generatedArticle}`} id="generated-article-text"></textarea>
+                <div className="word-count">
+                    <span>Word Count: {wCount}</span>
+                </div>
+                <textarea readOnly  value={`${generatedArticle}`} id="generated-article-text"></textarea>
             </div>
         </div>
     );
